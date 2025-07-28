@@ -41,14 +41,15 @@ Note before reading the specifications:
 | 2.5    | `intermediary/website`     | String    | No       | The website URL of the entity. Not relevant when a ROR ID is entered.                                                                                                      | https://www.couperin.org/          |
 | 3      | `amount`        |  Number    | **Yes**            | The amount of the transfer/payment. This can be the amount received by the infrastructure or the amount paid by the supporting institution.                                                                                                            | 1250                               |
 | 4      | `currency`      |  String    | **Yes**            | The currency [ISO 4217 code](https://en.wikipedia.org/wiki/ISO_4217) of the the transfered money.                                                                                                                                                      | EUR                                |
-| 5      | `hide_amount`   |  Boolean   | No             | Whether the transfer amount should not be disclosed. No data equals `False`.                                                                                                                                                                           | FALSE                              |
+| 5      | `hide_amount`   |  Boolean   | No             | Whether the transfer amount should not be disclosed. No data equals `FALSE`.                                                                                                                                                                           | FALSE                              |
 | 6      | `date_invoice`  |  Date      | [Yes*]( #required-yes-single-star) | The invoice date for the transfer.                                                                                                                                                                                                                     | 2023-05-02                         |
 | 7      | `date_emitted`  |  Date      | [Yes*]( #required-yes-single-star) | The transfer issue date by the supporting institution. The 2 dates `date_emitted` and `date_received` can differ greatly when the money passes through an intermediary.                                                                                | 2023-05-31                         |
 | 8      | `date_received` |  Date      | [Yes*]( #required-yes-single-star) | The date of receipt of the transfer.                                                                                                                                                                                                                   | 2023-07-01                         |                                    |
-| 9.1    | `contract/id`              | String    | [No**](#required-no-double-star)             | Any string uniquely identifying the contract/subsidy/support agreement the transfer is a part of. This is useful when several transfers are made within the same contract to link them, e.g. 3 transfers respectively made in 2022, 2023 and 2024 within a 3-year supporting agreement.                                                                                                                                                                                                | L2167                                   |
-| 9.2    | `contract/description`     | String    | No             | A description of the contract.                                                                                                                                                                                                                         | 3-year support agreement           |
-| 9.3    | `contract/date_start`      | Date      | [Yes*]( #required-yes-single-star) | The start date of the contract. It usually to the start date of the support agreement.                                                                                                                                                                 | 2023-01-01                         |
-| 9.4    | `contract/date_end`        | Date      | [Yes*]( #required-yes-single-star) | The end date of the contract. It usually to the start date of the support agreement.                                                                                                                                                                   | 2025-12-31                         |
+| 9      | `scoss` |  Boolean      | No | Whether the transfer is related to [SCOSS funding cycles](https://scoss.org/how-it-works/funding-cycles/). No data equals `FALSE`.                                                                                                                                                                                                                    | TRUE                         |                                    |
+| 10.1    | `contract/id`              | String    | [No**](#required-no-double-star)             | Any string uniquely identifying the contract/subsidy/support agreement the transfer is a part of. This is useful when several transfers are made within the same contract to link them, e.g. 3 transfers respectively made in 2022, 2023 and 2024 within a 3-year supporting agreement.                                                                                                                                                                                                | L2167                                   |
+| 10.2    | `contract/description`     | String    | No             | A description of the contract.                                                                                                                                                                                                                         | 3-year support agreement           |
+| 10.3    | `contract/date_start`      | Date      | [Yes*]( #required-yes-single-star) | The start date of the contract. It usually to the start date of the support agreement.                                                                                                                                                                 | 2023-01-01                         |
+| 10.4    | `contract/date_end`        | Date      | [Yes*]( #required-yes-single-star) | The end date of the contract. It usually to the start date of the support agreement.                                                                                                                                                                   | 2025-12-31                         |
 
 ### Schema outline
 
@@ -91,15 +92,17 @@ TSOSI transfer/payment
     |
     |--- date_received [8]                      [optionnal]
     |
-    |--- contract [9]                           [optionnal]
+    |--- scoss [9]
+    |
+    |--- contract [10]                          [optionnal]
     |       |
-    |       |--- id [9.1]
+    |       |--- id [10.1]
     |       |
-    |       |--- description [9.2]
+    |       |--- description [10.2]
     |       |
-    |       |--- date_start [9.3]
+    |       |--- date_start [10.3]
     |       |
-    |       |--- date_end [9.4]
+    |       |--- date_end [10.4]
     |
 ```
 
