@@ -1,24 +1,25 @@
 
-# Schema used by TSOSI for data collection
+# Schema used by TSOSI to collect data
 
-## Infrastructure data
+TSOSI is a recent data platform launched in June 2025; see [tsosi.org](https://tsosi.org). It promotes transparency regarding financial support made for open science infrastructure. It's a tool for research institutions and infrastructures to implement open data related to financial support. At launch, the data source consists solely of infrastructure, and we are working on designing a process that will also allow institutions to provide data. See: 
 
-**Infrastructure organizations** are welcome to share their financial data. Please use the following file to structure the data: [`2025--TSOSI-data-schema-infra-template.xlsx`](./2025--TSOSI-data-schema-infra-template.xlsx).
+- [Data schema for infrastructure](#data-schema-for-infrastructure)
+
+- [Data schema for institution](#data-schema-for-institution)
+
+
+<br />
+<br />
+<br />
+<br />
+
+## Data schema for infrastructure
+
+**Infrastructure** are welcome to share their financial data. Please use the following file to structure the data: [`2025--TSOSI-data-schema-infra-template.xlsx`](./2025--TSOSI-data-schema-infra-template.xlsx).
 
 ### Schema definition
 
-The following table describes all the fields of the template spreadsheet.
-Each individual payment should be entered as a separate row.
-
-Note before reading the specifications:
-
-- We strongly encourage you to fill the **ROR ID** of the involved institution (and intermediary) when it’s available, rather than the institution’s wikidata ID, country and website.
-    
-    We use the ROR ID to de-duplicate the data and to enrich it with additional information from the ROR records (including wikidata ID, country and website).
-
-- <span id="required-yes-single-star">`Required = Yes*`</span> - At least 1 of the date fields with this value must be entered. The `date_emitted` or `date_received` fields are preferred.
-
-- <span id="required-no-double-star">`Required = No**`</span> - This is not required but it is strongly recommended to fill it when possible.
+The following table describes all the fields of the template spreadsheet. Each individual payment should be entered as a separate row. TSOSI highly rely on the ROR registry. We use it to de-duplicate the data and to enrich with additionnal information like country, website and wikidata identifier. As far as possible, please fill the **ROR ID** column, and you will not have to fill the country, website and wikidata columns. 
 
 - `Data type = Date` values can be entered with one of the following formats according to the accuracy:
     * year format - `2024`
@@ -50,6 +51,13 @@ Note before reading the specifications:
 | 10.2    | `contract/description`     | String    | No             | A description of the contract.                                                                                                                                                                                                                         | 3-year support agreement           |
 | 10.3    | `contract/date_start`      | Date      | [Yes*]( #required-yes-single-star) | The start date of the contract. It usually to the start date of the support agreement.                                                                                                                                                                 | 2023-01-01                         |
 | 10.4    | `contract/date_end`        | Date      | [Yes*]( #required-yes-single-star) | The end date of the contract. It usually to the start date of the support agreement.                                                                                                                                                                   | 2025-12-31                         |
+
+
+
+- <span id="required-yes-single-star">`Required = Yes*`</span> - At least 1 of the date fields with this value must be entered. The `date_emitted` or `date_received` fields are preferred.
+
+- <span id="required-no-double-star">`Required = No**`</span> - This is not required but it is strongly recommended to fill it when possible.
+
 
 ### Schema outline
 
@@ -107,10 +115,11 @@ TSOSI transfer/payment
 ```
 
 
-## Institution data
-
-For institutions, TSOSI plans to use the data schema of OpenCost to collect data: https://github.com/opencost-de/opencost/tree/main
-
+<br />
+<br />
+<br />
 <br />
 
-> The more we highlight those who have funded, the more funders we will attract
+## Data schema for institution
+
+TSOSI is working with OpenCost to design a data schema that is accurate for institutions. See the OpenCost data schema: https://github.com/opencost-de/opencost/tree/main
