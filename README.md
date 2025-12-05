@@ -31,26 +31,25 @@ The following table describes all the fields of the template spreadsheet. Each i
 | Number | Field name                | Data type | Required | Description                                                                                                                                                               | Example                   |
 |--------|---------------------------|-----------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
 | 1.1    | `institution/name`        | String    | **Yes**  | The full name of the supporting entity (university, company, library, ...).                                                                                               | Université Grenoble Alpes |
-| 1.2    | `institution/ror_id`      | String    | No       | The full ROR ID of the entity. The ROR ID is strongly preferred over the other fields `wikidata_id`, `country` and `website`.                                             | https://ror.org/02rx3b187 |
+| 1.2    | `institution/ror_id`      | String    | No       | The ROR ID of the entity. The ROR ID is strongly preferred over the other fields `wikidata_id`, `country` and `website`.                                             | 02rx3b187 |
 | 1.3    | `institution/wikidata_id` | String    | No       | The wikidata ID of the entity, e.g. Q12546. Not relevant when a ROR ID is entered.                                                                                        | Q945876                   |
 | 1.4    | `institution/country`     | String    | No       | The country [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) (preferred) or English name of the entity. Not relevant when a ROR ID is entered. | FR                        |
 | 1.5    | `institution/website`      | String    | No       | The website URL of the entity. Not relevant when a ROR ID is entered.                                                                                                      | https://www.univ-grenoble-alpes.fr |                     |
 | 2.1    | `intermediary/name`        | String    | No       | The full name of the intermediray entity, if any. This should be filled when a transfer is done through another entity like a library consortia.                                                                                                                                   | COUPERIN                           |
-| 2.2    | `intermediary/ror_id`      | String    | No       | The full ROR ID of the entity. The ROR ID is strongly preferred over the other fields `wikidata_id`, `country` and `website`.                                                                               | https://ror.org/035c9qf67          |
+| 2.2    | `intermediary/ror_id`      | String    | No       | The ROR ID of the entity. The ROR ID is strongly preferred over the other fields `wikidata_id`, `country` and `website`.                                                                               | 035c9qf67          |
 | 2.3    | `intermediary/wikidata_id` | String    | No       | The wikidata ID of the entity, e.g. Q12546. Not relevant when a ROR ID is entered.                                                                                         | Q2994760                           |
 | 2.4    | `intermediary/country`     | String    | No       | The country [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) (preferred) or English name of the entity. Not relevant when a ROR ID is entered.  | FR                                 |
 | 2.5    | `intermediary/website`     | String    | No       | The website URL of the entity. Not relevant when a ROR ID is entered.                                                                                                      | https://www.couperin.org/          |
-| 3      | `amount`        |  Number    | **Yes**            | The amount of the transfer/payment. This can be the amount received by the infrastructure or the amount paid by the supporting institution.                                                                                                            | 1250                               |
+| 3      | `amount`        |  Number    | **Yes**            | The amount of the transfer/payment. This can be the amount received by the infrastructure or the amount paid by the supporting institution. It should include all taxes.                                                                                                             | 1250                               |
 | 4      | `currency`      |  String    | **Yes**            | The currency [ISO 4217 code](https://en.wikipedia.org/wiki/ISO_4217) of the the transfered money.                                                                                                                                                      | EUR                                |
-| 5      | `hide_amount`   |  Boolean   | No             | Whether the transfer amount should not be disclosed. No data equals `FALSE`.                                                                                                                                                                           | FALSE                              |
-| 6      | `date_invoice`  |  Date      | [Yes*]( #required-yes-single-star) | The invoice date for the transfer.                                                                                                                                                                                                                     | 2023-05-02                         |
-| 7      | `date_emitted`  |  Date      | [Yes*]( #required-yes-single-star) | The transfer issue date by the supporting institution. The 2 dates `date_emitted` and `date_received` can differ greatly when the money passes through an intermediary.                                                                                | 2023-05-31                         |
-| 8      | `date_received` |  Date      | [Yes*]( #required-yes-single-star) | The date of receipt of the transfer.                                                                                                                                                                                                                   | 2023-07-01                         |                                    |
+| 5      | `date_invoice`  |  Date      | [Yes*]( #required-yes-single-star) | The invoice date for the transfer.                                                                                                                                                                                                                     | 2023-05-02                         |
+| 6      | `date_emitted`  |  Date      | [Yes*]( #required-yes-single-star) | The transfer issue date by the supporting institution. The 2 dates `date_emitted` and `date_received` can differ greatly when the money passes through an intermediary.                                                                                | 2023-05-31                         |
+| 7      | `date_received` |  Date      | [Yes*]( #required-yes-single-star) | The date of receipt of the transfer.                                                                                                                                                                                                                   | 2023-07-01                         |                                    |
+| 8.1    | `contract/id`              | String    | [No**](#required-no-double-star)             | Any string uniquely identifying the contract/subsidy/support agreement the transfer is a part of. This is useful when several transfers are made within the same contract to link them, e.g. 3 transfers respectively made in 2022, 2023 and 2024 within a 3-year supporting agreement.                                                                                                                                                                                                | L2167                                   |
+| 8.2    | `contract/description`     | String    | No             | A description of the contract.                                                                                                                                                                                                                         | 3-year support agreement           |
+| 8.3    | `contract/date_start`      | Date      | [Yes*]( #required-yes-single-star) | The start date of the contract. It usually to the start date of the support agreement.                                                                                                                                                                 | 2023-01-01                         |
+| 8.4    | `contract/date_end`        | Date      | [Yes*]( #required-yes-single-star) | The end date of the contract. It usually to the start date of the support agreement.                                                                                                                                                                   | 2025-12-31                         |
 | 9      | `scoss` |  Boolean      | No | Whether the transfer is related to [SCOSS funding cycles](https://scoss.org/how-it-works/funding-cycles/). No data equals `FALSE`.                                                                                                                                                                                                                    | TRUE                         |                                    |
-| 10.1    | `contract/id`              | String    | [No**](#required-no-double-star)             | Any string uniquely identifying the contract/subsidy/support agreement the transfer is a part of. This is useful when several transfers are made within the same contract to link them, e.g. 3 transfers respectively made in 2022, 2023 and 2024 within a 3-year supporting agreement.                                                                                                                                                                                                | L2167                                   |
-| 10.2    | `contract/description`     | String    | No             | A description of the contract.                                                                                                                                                                                                                         | 3-year support agreement           |
-| 10.3    | `contract/date_start`      | Date      | [Yes*]( #required-yes-single-star) | The start date of the contract. It usually to the start date of the support agreement.                                                                                                                                                                 | 2023-01-01                         |
-| 10.4    | `contract/date_end`        | Date      | [Yes*]( #required-yes-single-star) | The end date of the contract. It usually to the start date of the support agreement.                                                                                                                                                                   | 2025-12-31                         |
 
 
 
@@ -92,26 +91,23 @@ TSOSI transfer/payment
     |
     |--- currency [4]
     |
-    |--- hide_amount [5]                        [optionnal]
+    |--- date_invoice [5]                       [optionnal]
     |
-    |--- date_invoice [6]                       [optionnal]
+    |--- date_emitted [6]                       [optionnal]
     |
-    |--- date_emitted [7]                       [optionnal]
+    |--- date_received [7]                      [optionnal]
     |
-    |--- date_received [8]                      [optionnal]
-    |
-    |--- scoss [9]
-    |
-    |--- contract [10]                          [optionnal]
+    |--- contract [8]                           [optionnal]
     |       |
-    |       |--- id [10.1]
+    |       |--- id [8.1]
     |       |
-    |       |--- description [10.2]
+    |       |--- description [8.2]
     |       |
-    |       |--- date_start [10.3]
+    |       |--- date_start [8.3]
     |       |
-    |       |--- date_end [10.4]
+    |       |--- date_end [8.4]
     |
+    |--- scoss [9]                             [optionnal]
 ```
 
 
