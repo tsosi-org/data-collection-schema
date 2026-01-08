@@ -6,21 +6,19 @@ TSOSI is a recent data platform launched in June 2025; see [tsosi.org](https://t
 **Institutions** and **infrastructure** are welcome to share their financial data. Please use provided templates to structure your data.
 
 
-- [Template and schema for institution](#data-schema-for-institution)
+- [Template for institution](#template-for-institution)
 
-- [Template and schema for infrastructure](#data-schema-for-infrastructure)
+- [Template for infrastructure](#template-for-infrastructure)
 <br />
 <br />
 
 
 
-## Data schema for institution
+## Template for institution
 
 TSOSI invites institutions to share their data using a standardized spreadsheet. Each row of the spreadsheet will describe one transfer, while the columns will delineate the specific details of this transfer. To access an example format, please download the template file: [`2025--TSOSI-data-schema-institution-template.xlsx`](./2025--TSOSI-data-schema-institution-template.xlsx). 
 
-The information and table below provides a detailed explanation of the columns and the expected data formats.
-
-For any questions or concerns, please feel free to contact us: https://tsosi.org/pages/faq#contact-us
+The information and table below provides a detailed explanation of the columns and the expected data formats. For any questions or concerns, please feel free to contact us: https://tsosi.org/pages/faq#contact-us
 
 **ROR identifier**
 
@@ -34,6 +32,7 @@ Values can be entered with one of the following formats according to the accurac
 - Day precision: `2024-03-13`
 
 
+**Data schema**
 
 | Number | Field name                | Data type | Required | Description                                                                                                                                                               | Example                   |
 |--------|---------------------------|-----------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
@@ -66,7 +65,7 @@ Values can be entered with one of the following formats according to the accurac
 
 
 
-### Schema outline
+**Schema outline**
 
 ```
 TSOSI transfer/payment
@@ -129,11 +128,11 @@ This data schema for institutions is interoperable with that of OpenCost (see ht
 <br />
 <br />
 
-## Data schema for infrastructure
+## Template for infrastructure
 
 Template file: [`2025--TSOSI-data-schema-infra-template.xlsx`](./2025--TSOSI-data-schema-infra-template.xlsx).
 
-### Schema definition
+**Data schema**
 
 
 | Number | Field name                | Data type | Required | Description                                                                                                                                                               | Example                   |
@@ -159,7 +158,7 @@ Template file: [`2025--TSOSI-data-schema-infra-template.xlsx`](./2025--TSOSI-dat
 | 8.4    | `contract/date_end`        | Date      | [Yes*]( #required-yes-single-star) | The end date of the contract. It usually to the start date of the support agreement.                                                                                                                                                                   | 2025-12-31                         |
 | 9      | `scoss` |  Boolean      | No | Whether the transfer is related to [SCOSS funding cycles](https://scoss.org/how-it-works/funding-cycles/). No data equals `FALSE`.                                                                                                                                                                                                                    | TRUE                         |                                    |
 
-### Schema outline
+**Schema outline**
 
 ```
 TSOSI transfer/payment
