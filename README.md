@@ -23,13 +23,15 @@ The information and table below provides a detailed explanation of the columns a
 For any questions or concerns, please feel free to contact us: https://tsosi.org/pages/faq#contact-us
 
 **ROR identifier**
+
 TSOSI highly rely on the ROR registry. We use it to de-duplicate the data and to enrich with additionnal information like country, website and wikidata identifier. As far as possible, please fill the **ROR ID** columns, and you will not have to fill the country, website and wikidata columns. 
 
 **Date format**
+
 Values can be entered with one of the following formats according to the accuracy:
-- year format - `2024`
-- year-month format - `2024-03` for March 2024
-- day format - `2024-03-13` for March 13th 2024.
+- Year only: `2024`
+- Month precision: `2024-03`
+- Day precision: `2024-03-13`
 
 
 
