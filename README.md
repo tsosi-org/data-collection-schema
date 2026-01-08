@@ -3,13 +3,13 @@
 
 TSOSI is a recent data platform launched in June 2025; see [tsosi.org](https://tsosi.org). It promotes transparency regarding financial support made for open science infrastructure. It's a tool for research institutions and infrastructures to implement open data related to financial support. 
 
-**Infrastructure** and **institutions** are welcome to share their financial data. Please use provided templates to structure your data.
+**Institutions** and **infrastructure** are welcome to share their financial data. Please use provided templates to structure your data.
 
-
-- [Template and schema for infrastructure](#data-schema-for-infrastructure)
-<br />
 
 - [Template and schema for institution](#data-schema-for-institution)
+<br />
+
+- [Template and schema for infrastructure](#data-schema-for-infrastructure)
 <br />
 <br />
 
@@ -26,6 +26,98 @@ The following tables describe all the fields of the schema. Each individual paym
 - <span id="required-no-double-star">`Required = No**`</span> - This is not required but it is strongly recommended to fill it when possible.
 
 
+
+## Data schema for institution
+
+TSOSI invites institutions to share their data using a standardized spreadsheet. Each row of the spreadsheet will describe one transfer, while the columns will delineate the specific details of this transfer. To access an example format, please download the template file: [`2025--TSOSI-data-schema-institution-template.xlsx`](./2025--TSOSI-data-schema-institution-template.xlsx). 
+
+The table below provides a detailed explanation of the columns and the expected data formats.
+
+For any questions or concerns, please feel free to contact us: https://tsosi.org/pages/faq#contact-us
+
+
+| Number | Field name                | Data type | Required | Description                                                                                                                                                               | Example                   |
+|--------|---------------------------|-----------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
+| 1.1    | `infrastructure/name`        | String    | **Yes**  | The full name of the supported entity.                                                                                               | DOAJ |
+| 1.2    | `infrastructure/ror_id`      | String    | No       | The full ROR ID of the entity. The ROR ID is strongly preferred over the other fields `wikidata_id`, `country` and `website`.                                             | 05amyt365 |
+| 1.3    | `infrastructure/wikidata_id` | String    | No       | The wikidata ID of the entity, e.g. Q1227538. Not relevant when a ROR ID is entered.                                                                                        | Q1227538                   |
+| 1.4    | `infrastructure/country`     | String    | No       | The country [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Not relevant when a ROR ID is entered. | DK                        |
+| 1.5    | `infrastructure/website`      | String    | No       | The website URL of the entity. Not relevant when a ROR ID is entered.                                                                                                      |  https://doaj.org |                     |
+| 2.1    | `intermediary/name`        | String    | No       | The full name of the intermediray entity, if any. This should be filled when a transfer is done through another entity like a library consortia.                                                                                                                                   | COUPERIN                           |
+| 2.2    | `intermediary/ror_id`      | String    | No       | The full ROR ID of the entity. The ROR ID is strongly preferred over the other fields `wikidata_id`, `country` and `website`.                                                                               | 035c9qf67          |
+| 2.3    | `intermediary/wikidata_id` | String    | No       | The wikidata ID of the entity, e.g. Q12546. Not relevant when a ROR ID is entered.                                                                                         | Q2994760                           |
+| 2.4    | `intermediary/country`     | String    | No       | The country [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Not relevant when a ROR ID is entered.  | FR                                 |
+| 2.5    | `intermediary/website`     | String    | No       | The website URL of the entity. Not relevant when a ROR ID is entered.                                                                                                      | https://www.couperin.org/          |
+| 3      | `amount`        |  Number    | **Yes**            | The amount of the transfer/payment. This is the amount paid by the supporting entity. It should include all taxes.                                                                                                            | 1250                               |
+| 4      | `date_invoice`  |  Date      | [Yes*]( #footnote_1) | The invoice date for the transfer.                                                                                                                                                                                                                     | 2023-05-02                         |
+| 5      | `date_emitted`  |  Date      | [Yes*]( #footnote_1) | The transfer issue date by the supporting institution.                                                                                | 2023-05-31                         |
+| 6      | `date_received` |  Date      | [Yes*]( #required-yes-single-star) | The date of receipt of the transfer.                                                                                                                                                                                                                   | 2023-07-01                         |                                    |
+| 7.1    | `contract/id`              | String    | [No**](#required-no-double-star)             | Any string uniquely identifying the contract/subsidy/support agreement the transfer is a part of. This is useful when several transfers are made within the same contract to link them, e.g. 3 transfers respectively made in 2022, 2023 and 2024 within a 3-year supporting agreement.                                                                                                                                                                                                | L2167                                   |
+| 7.2    | `contract/description`     | String    | No             | A description of the contract.                                                                                                                                                                                                                         | 3-year support agreement           |
+| 7.3    | `contract/date_start`      | Date      | [Yes*]( #required-yes-single-star) | The start date of the contract. It is usually the start date of the support agreement.                                                                                                                                                                 | 2023-01-01                         |
+| 7.4    | `contract/date_end`        | Date      | [Yes*]( #required-yes-single-star) | The end date of the contract. It is usually the end date of the support agreement.                                                                                                                                                                   | 2025-12-31                         |
+| 8      | `scoss` |  Boolean      | No | Whether the transfer is related to [SCOSS funding cycles](https://scoss.org/how-it-works/funding-cycles/). No data equals `FALSE`.                                                                                                                                                                                                                    | TRUE                         |                                    |
+
+
+### Schema outline
+
+```
+TSOSI transfer/payment
+    |
+    |--- infrastructure (entity) [1]
+    |       |
+    |       |--- name [1.1]
+    |       |
+    |       |--- ror_id [1.2]                   [optionnal]
+    |       |
+    |       |--- wikidata_id [1.3]              [optionnal]
+    |       |
+    |       |--- country [1.4]                  [optionnal]
+    |       |
+    |       |--- website [1.5]                  [optionnal]
+    |
+    |--- intermediary (entity) [2]              [optionnal]
+    |       |
+    |       |--- name [2.1]
+    |       |
+    |       |--- ror_id [2.2]
+    |       |
+    |       |--- wikidata_id [2.3]
+    |       |
+    |       |--- country [2.4]
+    |       |
+    |       |--- website [2.5]
+    |
+    |--- amount [3]                       
+    |
+    |--- date_invoice [4]                       [optionnal]
+    |
+    |--- date_emitted [5]                       [optionnal]
+    |
+    |--- date_received [6]                      [optionnal]
+    |
+    |--- contract [7]                           [optionnal]
+    |       |
+    |       |--- id [7.1]
+    |       |
+    |       |--- description [7.2]
+    |       |
+    |       |--- date_start [7.3]
+    |       |
+    |       |--- date_end [7.4]
+    |
+    |--- scoss [8]                              [optionnal]
+```
+
+
+**Interoperability**
+
+This data schema for institutions is interoperable with that of OpenCost (see https://github.com/opencost-de/opencost/tree/main)
+
+<br />
+<br />
+<br />
+<br />
 
 ## Data schema for infrastructure
 
@@ -107,91 +199,4 @@ TSOSI transfer/payment
     |       |--- date_end [8.4]
     |
     |--- scoss [9]                             [optionnal]
-```
-
-
-<br />
-<br />
-<br />
-<br />
-
-## Data schema for institution
-
-TSOSI is working with OpenCost to design a data schema that is accurate for institutions. See the OpenCost data schema: https://github.com/opencost-de/opencost/tree/main
-
-Template file: [`2025--TSOSI-data-schema-institution-template.xlsx`](./2025--TSOSI-data-schema-institution-template.xlsx).
-
-
-
-| Number | Field name                | Data type | Required | Description                                                                                                                                                               | Example                   |
-|--------|---------------------------|-----------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| 1.1    | `infrastructure/name`        | String    | **Yes**  | The full name of the supported entity.                                                                                               | DOAJ |
-| 1.2    | `infrastructure/ror_id`      | String    | No       | The full ROR ID of the entity. The ROR ID is strongly preferred over the other fields `wikidata_id`, `country` and `website`.                                             | 05amyt365 |
-| 1.3    | `infrastructure/wikidata_id` | String    | No       | The wikidata ID of the entity, e.g. Q1227538. Not relevant when a ROR ID is entered.                                                                                        | Q1227538                   |
-| 1.4    | `infrastructure/country`     | String    | No       | The country [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Not relevant when a ROR ID is entered. | DK                        |
-| 1.5    | `infrastructure/website`      | String    | No       | The website URL of the entity. Not relevant when a ROR ID is entered.                                                                                                      |  https://doaj.org |                     |
-| 2.1    | `intermediary/name`        | String    | No       | The full name of the intermediray entity, if any. This should be filled when a transfer is done through another entity like a library consortia.                                                                                                                                   | COUPERIN                           |
-| 2.2    | `intermediary/ror_id`      | String    | No       | The full ROR ID of the entity. The ROR ID is strongly preferred over the other fields `wikidata_id`, `country` and `website`.                                                                               | 035c9qf67          |
-| 2.3    | `intermediary/wikidata_id` | String    | No       | The wikidata ID of the entity, e.g. Q12546. Not relevant when a ROR ID is entered.                                                                                         | Q2994760                           |
-| 2.4    | `intermediary/country`     | String    | No       | The country [ISO 3166-1 alpha-2 code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). Not relevant when a ROR ID is entered.  | FR                                 |
-| 2.5    | `intermediary/website`     | String    | No       | The website URL of the entity. Not relevant when a ROR ID is entered.                                                                                                      | https://www.couperin.org/          |
-| 3      | `amount`        |  Number    | **Yes**            | The amount of the transfer/payment. This is the amount paid by the supporting entity. It should include all taxes.                                                                                                            | 1250                               |
-| 4      | `date_invoice`  |  Date      | [Yes*]( #footnote_1) | The invoice date for the transfer.                                                                                                                                                                                                                     | 2023-05-02                         |
-| 5      | `date_emitted`  |  Date      | [Yes*]( #footnote_1) | The transfer issue date by the supporting institution.                                                                                | 2023-05-31                         |
-| 6      | `date_received` |  Date      | [Yes*]( #required-yes-single-star) | The date of receipt of the transfer.                                                                                                                                                                                                                   | 2023-07-01                         |                                    |
-| 7.1    | `contract/id`              | String    | [No**](#required-no-double-star)             | Any string uniquely identifying the contract/subsidy/support agreement the transfer is a part of. This is useful when several transfers are made within the same contract to link them, e.g. 3 transfers respectively made in 2022, 2023 and 2024 within a 3-year supporting agreement.                                                                                                                                                                                                | L2167                                   |
-| 7.2    | `contract/description`     | String    | No             | A description of the contract.                                                                                                                                                                                                                         | 3-year support agreement           |
-| 7.3    | `contract/date_start`      | Date      | [Yes*]( #required-yes-single-star) | The start date of the contract. It is usually the start date of the support agreement.                                                                                                                                                                 | 2023-01-01                         |
-| 7.4    | `contract/date_end`        | Date      | [Yes*]( #required-yes-single-star) | The end date of the contract. It is usually the end date of the support agreement.                                                                                                                                                                   | 2025-12-31                         |
-| 8      | `scoss` |  Boolean      | No | Whether the transfer is related to [SCOSS funding cycles](https://scoss.org/how-it-works/funding-cycles/). No data equals `FALSE`.                                                                                                                                                                                                                    | TRUE                         |                                    |
-
-
-### Schema outline
-
-```
-TSOSI transfer/payment
-    |
-    |--- infrastructure (entity) [1]
-    |       |
-    |       |--- name [1.1]
-    |       |
-    |       |--- ror_id [1.2]                   [optionnal]
-    |       |
-    |       |--- wikidata_id [1.3]              [optionnal]
-    |       |
-    |       |--- country [1.4]                  [optionnal]
-    |       |
-    |       |--- website [1.5]                  [optionnal]
-    |
-    |--- intermediary (entity) [2]              [optionnal]
-    |       |
-    |       |--- name [2.1]
-    |       |
-    |       |--- ror_id [2.2]
-    |       |
-    |       |--- wikidata_id [2.3]
-    |       |
-    |       |--- country [2.4]
-    |       |
-    |       |--- website [2.5]
-    |
-    |--- amount [3]                       
-    |
-    |--- date_invoice [4]                       [optionnal]
-    |
-    |--- date_emitted [5]                       [optionnal]
-    |
-    |--- date_received [6]                      [optionnal]
-    |
-    |--- contract [7]                           [optionnal]
-    |       |
-    |       |--- id [7.1]
-    |       |
-    |       |--- description [7.2]
-    |       |
-    |       |--- date_start [7.3]
-    |       |
-    |       |--- date_end [7.4]
-    |
-    |--- scoss [8]                              [optionnal]
 ```
