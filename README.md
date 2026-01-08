@@ -16,7 +16,10 @@ TSOSI is a recent data platform launched in June 2025; see [tsosi.org](https://t
 
 ## Template for institution
 
-TSOSI invites institutions to share their data using a standardized spreadsheet. Each row of the spreadsheet will describe one transfer, while the columns will delineate the specific details of this transfer. To access an example format, please download the template file: [`2025--TSOSI-data-schema-institution-template.xlsx`](./2025--TSOSI-data-schema-institution-template.xlsx). 
+TSOSI invites institutions to share their data using a standardized spreadsheet. Each row of the spreadsheet will describe one transfer, while the columns will delineate the specific details of this transfer. To access an example format, please download the template file: [`2025--TSOSI-data-schema-institution-template.xlsx`](https://github.com/tsosi-org/data-collection-schema/raw/main/2025--TSOSI-data-schema-infra-template.xlsx). 
+
+
+
 
 The information and table below provides a detailed explanation of the columns and the expected data formats. For any questions or concerns, please feel free to contact us: https://tsosi.org/pages/faq#contact-us
 
@@ -130,7 +133,7 @@ This data schema for institutions is interoperable with that of OpenCost (see ht
 
 ## Template for infrastructure
 
-Template file: [`2025--TSOSI-data-schema-infra-template.xlsx`](./2025--TSOSI-data-schema-infra-template.xlsx).
+Template file: [`2025--TSOSI-data-schema-infra-template.xlsx`](https://github.com/tsosi-org/data-collection-schema/raw/main/2025--TSOSI-data-schema-infra-template.xlsx).
 
 **Data schema**
 
