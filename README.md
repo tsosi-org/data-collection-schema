@@ -51,7 +51,7 @@ Values can be entered with one of the following formats according to the accurac
 | 2.5    | `intermediary/website`     | String    | No       | The website URL of the entity. Not relevant when a ROR ID is entered.                                                                                                      | https://www.couperin.org/          |
 | 3      | `amount`        |  Number    | **Yes**            | The amount of the transfer/payment. This is the amount paid by the supporting entity. It should include all taxes.                                                                                                            | 1250                               |
 | 4      | `date_invoice`  |  Date      | [Yes*]( #required-yes-single-star) | The invoice date for the transfer.                                                                                                                                                                                                                     | 2023-05-02                         |
-| 5      | `date_emitted`  |  Date      | [Yes*]( #required-yes-single-star) | The transfer issue date by the supporting institution.                                                                                | 2023-05-31                         |
+| 5      | `date_sent`  |  Date      | [Yes*]( #required-yes-single-star) | The transfer issue date by the supporting institution.                                                                                | 2023-05-31                         |
 | 6      | `date_received` |  Date      | [Yes*]( #required-yes-single-star) | The date of receipt of the transfer.                                                                                                                                                                                                                   | 2023-07-01                         |                                    |
 | 7.1    | `contract/id`              | String    | [No**](#required-no-double-star)             | Any string uniquely identifying the contract/subsidy/support agreement the transfer is a part of. This is useful when several transfers are made within the same contract to link them, e.g. 3 transfers respectively made in 2022, 2023 and 2024 within a 3-year supporting agreement.                                                                                                                                                                                                | L2167                                   |
 | 7.2    | `contract/description`     | String    | No             | A description of the contract.                                                                                                                                                                                                                         | 3-year support agreement           |
@@ -62,7 +62,7 @@ Values can be entered with one of the following formats according to the accurac
 
 **Footnotes**
 
-- <span id="required-yes-single-star">`Required = Yes*`</span> - At least 1 of the date fields with this value must be entered. The `date_emitted` or `date_received` fields are preferred.
+- <span id="required-yes-single-star">`Required = Yes*`</span> - At least 1 of the date fields with this value must be entered. The `date_sent` or `date_received` fields are preferred.
 
 - <span id="required-no-double-star">`Required = No**`</span> - This is not required but it is strongly recommended to fill it when possible.
 
@@ -101,7 +101,7 @@ TSOSI transfer/payment
     |
     |--- date_invoice [4]                       [optionnal]
     |
-    |--- date_emitted [5]                       [optionnal]
+    |--- date_sent [5]                       [optionnal]
     |
     |--- date_received [6]                      [optionnal]
     |
@@ -153,7 +153,7 @@ Template file: [`2025--TSOSI-data-schema-infra-template.xlsx`](https://github.co
 | 3      | `amount`        |  Number    | **Yes**            | The amount of the transfer/payment. This can be the amount received by the infrastructure or the amount paid by the supporting institution. It should include all taxes.                                                                                                             | 1250                               |
 | 4      | `currency`      |  String    | **Yes**            | The currency [ISO 4217 code](https://en.wikipedia.org/wiki/ISO_4217) of the the transfered money.                                                                                                                                                      | EUR                                |
 | 5      | `date_invoice`  |  Date      | [Yes*]( #required-yes-single-star) | The invoice date for the transfer.                                                                                                                                                                                                                     | 2023-05-02                         |
-| 6      | `date_emitted`  |  Date      | [Yes*]( #required-yes-single-star) | The transfer issue date by the supporting institution. The 2 dates `date_emitted` and `date_received` can differ greatly when the money passes through an intermediary.                                                                                | 2023-05-31                         |
+| 6      | `date_sent`  |  Date      | [Yes*]( #required-yes-single-star) | The transfer issue date by the supporting institution. The 2 dates `date_sent` and `date_received` can differ greatly when the money passes through an intermediary.                                                                                | 2023-05-31                         |
 | 7      | `date_received` |  Date      | [Yes*]( #required-yes-single-star) | The date of receipt of the transfer.                                                                                                                                                                                                                   | 2023-07-01                         |                                    |
 | 8.1    | `contract/id`              | String    | [No**](#required-no-double-star)             | Any string uniquely identifying the contract/subsidy/support agreement the transfer is a part of. This is useful when several transfers are made within the same contract to link them, e.g. 3 transfers respectively made in 2022, 2023 and 2024 within a 3-year supporting agreement.                                                                                                                                                                                                | L2167                                   |
 | 8.2    | `contract/description`     | String    | No             | A description of the contract.                                                                                                                                                                                                                         | 3-year support agreement           |
@@ -196,7 +196,7 @@ TSOSI transfer/payment
     |
     |--- date_invoice [5]                       [optionnal]
     |
-    |--- date_emitted [6]                       [optionnal]
+    |--- date_sent [6]                       [optionnal]
     |
     |--- date_received [7]                      [optionnal]
     |
