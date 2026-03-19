@@ -6,9 +6,9 @@ TSOSI is a recent data platform launched in June 2025; see [tsosi.org](https://t
 **Institutions** and **infrastructure** are welcome to share their financial data. Please use provided templates to structure your data.
 
 
-- [Template for institution](#template-for-institution)
+- [Download template for institution](https://github.com/tsosi-org/data-collection-schema/raw/refs/heads/main/2026--TSOSI-data-schema-institution-template.xlsx)
 
-- [Template for infrastructure](#template-for-infrastructure)
+- [Download template for infrastructure](https://github.com/tsosi-org/data-collection-schema/raw/refs/heads/main/2026--TSOSI-data-schema-infra-template.xlsx)
 <br />
 <br />
 
