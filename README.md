@@ -59,6 +59,8 @@ TSOSI transfer/payment
     |       |--- date_start [8.1]
     |       |
     |       |--- date_end [8.2]
+    |
+    |--- support_type [9]
 ```
 
 ## Data schema
@@ -81,6 +83,8 @@ TSOSI transfer/payment
 | 7          | date_received              | Required\*   | The date of receipt of the transfer.                                                                                                             | 2023-07-01                |
 | 8.1        | contract/date_start        | Required\*   | The start date of the contract. It is usually the start date of the support agreement.                                                           | 2023-01-01                |
 | 8.2        | contract/date_end          | Required\*   | The end date of the contract. It is usually the end date of the support agreement.                                                               | 2025-12-31                |
+| 9          | support_type               |              | Type of support. Choose between : sponsorship, membership, service fee, grant or project funding, support, collaboration agreement, donation or other.             | membership                |
+
 
 ### Footnotes
 
